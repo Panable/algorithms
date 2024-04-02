@@ -1,0 +1,32 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-o",
+      "vector",
+      "main.c"
+    ],
+    "directory": "/home/thepanable/Dev/personal/C/algorithms/src/vectors",
+    "file": "/home/thepanable/Dev/personal/C/algorithms/src/vectors/main.c",
+    "output": "/home/thepanable/Dev/personal/C/algorithms/src/vectors/vector"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-o",
+      "vector",
+      "vector.c"
+    ],
+    "directory": "/home/thepanable/Dev/personal/C/algorithms/src/vectors",
+    "file": "/home/thepanable/Dev/personal/C/algorithms/src/vectors/vector.c",
+    "output": "/home/thepanable/Dev/personal/C/algorithms/src/vectors/vector"
+  }
+]
