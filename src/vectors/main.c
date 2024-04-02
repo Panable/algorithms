@@ -8,5 +8,5 @@ int main(void)
     v_insert(vector, 16, 1);
     v_insert(vector, 24, 2);
     v_insert(vector, 24, 12);
-    v_print(vector);
+    v_dump(vector);
 }

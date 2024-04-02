@@ -88,7 +88,7 @@ int v_find(Vector* vec, int item)
 
 }
 
-void v_print(Vector* vec)
+void v_dump(Vector* vec)
 {
     printf("Size: %d\n", vec->size);
     printf("Capacity: %d\n", vec->capacity);
