@@ -10,20 +10,20 @@ typedef struct Vector
 #include "vector.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 
 #define START_ARR_SZ 16
 
-Vector* v_create()
+Vector* v_create(void)
 {
     Vector* vec = malloc(sizeof(Vector));
 
     if (vec) {
-        vec->size = 0;
+        vec->size     = 0;
         vec->capacity = START_ARR_SZ;
-        vec->data = malloc(vec->capacity * sizeof(*vec->data));
+        vec->data     = malloc(vec->capacity * sizeof(*vec->data));
+
         if (vec->data) {
-            memset(vec->data, 0,  vec->capacity * sizeof(*vec->data));
+            memset(vec->data, 0, vec->capacity * sizeof(*vec->data));
             return vec;
         }
     }
@@ -43,7 +43,7 @@ int v_capacity(Vector* vec)
 
 bool v_is_empty(Vector* vec)
 {
-
+    return vec->size == 0;
 }
 
 int v_at(Vector* vec, int index)

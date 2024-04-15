@@ -5,7 +5,7 @@
 
 #include <stdbool.h>
 
-Vector* v_create();                                 // Create a new vector, returning pointer to it
+Vector* v_create(void);                             // Create a new vector, returning pointer to it
 int     v_size(Vector* vec);                        // Number of items
 int     v_capacity(Vector* vec);                    // Number of items it can hold
 bool    v_is_empty(Vector* vec);                    // Checks if the vector has any data
