@@ -1,11 +1,19 @@
 #include "vector.h"
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 int main(void)
 {
+
     Vector* vector = v_create();
-    v_insert(vector, 8, 0);
-    v_insert(vector, 16, 1);
-    v_insert(vector, 24, 2);
-    v_insert(vector, 24, 12);
+    srand(time(NULL));
+    for (size_t i = 0; i < 16; i++)
+    {
+        int r = rand();
+        v_push(vector, r);
+    }
+
+
     v_dump(vector);
 }

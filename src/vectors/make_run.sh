@@ -1,6 +1,6 @@
 rm vector
 
-CFLAGS="-Wall -Wextra -pedantic"
+CFLAGS="-Wall -Wextra -pedantic -ggdb"
 SOURCES="main.c vector.c"
 LIBS="-lc"
 
