@@ -14,6 +14,5 @@ int main(void)
         v_push(vector, r);
     }
 
-
     v_dump(vector);
 }
