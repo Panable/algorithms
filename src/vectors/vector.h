@@ -14,7 +14,7 @@ void    v_push(Vector* vec, int item);                 // Insert item to end of 
 void    v_insert(Vector* vec, int item, int index);    // insert item at index, shift all values right
 void    v_prepend(Vector* vec, int item);              // Insert item at start of vector, shift all values right
 int     v_pop(Vector* vec);                            // Removes item from end, returning the value
-void    v_delete(Vector* vec, int index);              // Delete item at index, shift all values right
+void    v_delete(Vector* vec, int index);              // Delete item at index, shift all values left
 void    v_remove(Vector* vec, int item);               // Looks for value and removes index holding it (works for multiple)
 int     v_find(Vector* vec, int item);                 // Look for value, returning first index found
 void    v_dump(Vector* vec);                           // Print Array

@@ -116,8 +116,8 @@ void v_delete(Vector* vec, int index)
     if (index >= vec->size)
         exit(EXIT_FAILURE);
 
-    memmove(vec->data + index, vec->data + index + 1, sizeof(*vec->data) * (vec->size - index + 1));
-    vec->size--;
+    memmove(vec->data + index, vec->data + index + 1, sizeof(*vec->data) * (vec->size - index));
+    //vec->size--;
 }
 
 void v_remove(Vector* vec, int item)
