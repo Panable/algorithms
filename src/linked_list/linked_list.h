@@ -19,4 +19,4 @@ void    ll_erase(Node** head, size_t index);             // removes node at give
 int     ll_value_n_from_end(Node* head, size_t n);       // returns the value of the node at the nth position from the end of the list
 void    ll_reverse(Node* head);                          // reverses the list
 void    ll_remove_value(Node* head, int value);          // removes the first item in the list with this value
-
+void    ll_dump(Node* head);                             // Print

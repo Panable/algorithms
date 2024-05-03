@@ -1,5 +1,6 @@
 #include "linked_list.h"
 #include <assert.h>
+#include <stdio.h>
 
 struct Node_Instance {
     int data;
@@ -11,7 +12,10 @@ Node* ll_create(void)
     Node* head = malloc(sizeof(Node));
 
     if (head)
+    {
+        head->data = 0;
         return head;
+    }
 
     return NULL;
 }
@@ -22,7 +26,7 @@ size_t ll_size(Node* head)
     Node* cur = head;
     while (cur) {
         size++;
-        cur = head->next;
+        cur = cur->next;
     }
     return size;
 }
@@ -41,7 +45,7 @@ int ll_value_at(Node* head, size_t index)
         if (index == i)
             return cur->data;
 
-        cur = head->next;
+        cur = cur->next;
     }
     return -1;
 }
@@ -72,7 +76,7 @@ void ll_push_back(Node* head, int value)
     Node* prev = NULL;
     while (cur) {
         prev = cur;
-        cur = head->next;
+        cur = cur->next;
     }
 
     assert(prev);
@@ -91,7 +95,7 @@ int ll_pop_back(Node* head)
     Node* prev = NULL;
     while (cur) {
         prev = cur;
-        cur = head->next;
+        cur = cur->next;
     }
 
     assert(prev);
@@ -117,7 +121,7 @@ int ll_back(Node* head)
     Node* prev = NULL;
     while (cur) {
         prev = cur;
-        cur = head->next;
+        cur = cur->next;
     }
     return prev->data;
 }
@@ -191,8 +195,20 @@ int ll_value_n_from_end(Node* head, size_t n)
     size_t num_iterations = sz - n - 1;
 
     Node* cur = head;
-    for (size_t i = 0; i < num_iterations; i++, cur = cur->next) {
+    for (size_t i = 0; i < num_iterations; i++) {
+        cur = cur->next;
     }
-
     return cur->data;
+
+}
+
+void ll_dump(Node* head)
+{
+    Node* cur = head;
+    while (cur) {
+        printf("[%d]", cur->data);
+        if (cur->next) printf("->");
+        cur = cur->next;
+    }
+    printf("\n");
 }
