@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/linked_list.dir/link.d CMakeFiles/linked_list.dir/src/main.cpp.o -o linked_list
