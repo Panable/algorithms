@@ -90,6 +90,65 @@ class LinkedList
             return val;
         }
 
+        T front()
+        {
+            if (_head == nullptr)
+                return -1;
+            return _head->_data;
+        }
+
+        T back()
+        {
+            if (_head == nullptr)
+                return -1;
+            Node* tail = _head;
+
+            // walk the list
+            while (tail->_next)
+                tail = tail->_next;
+
+            return tail->_data;
+        }
+
+
+        /*
+           |      
+          [0] - [1] - [2] - [3] - [4]
+         
+
+                 |
+          [1] - [0] - [2] - [3] - [4]
+         
+                
+                       |
+          [2] - [1] - [0] - [3] - [4]
+          
+
+                             |
+          [3] - [2] - [1] - [0] - [4]
+
+
+                                   |
+          [4] - [3] - [2] - [1] - [0]
+         
+          | = orig
+                                        */
+
+        void reverse()
+        {
+            if (!_head) return;
+
+            size_t i = 0;
+            Node* orig = _head;
+            while (orig->_next)
+            {
+                Node* old = _head;
+                _head = orig->_next;
+                orig->_next = _head->_next;
+                _head->_next = old;
+            }
+        }
+
         LinkedList()
             :_head(nullptr)
         {
