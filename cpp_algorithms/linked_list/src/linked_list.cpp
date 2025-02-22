@@ -1,5 +1,6 @@
 #include "linked_list.h"
 
+
 template<class T>
 struct LinkedList<T>::Node
 {
@@ -114,6 +115,27 @@ T LinkedList<T>::pop_back()
     return val;
 }
 
+template<class T>
+T LinkedList<T>::front()
+{
+    if (_head == nullptr)
+        return -1;
+    return _head->_data;
+}
+
+template<class T>
+T LinkedList<T>::back()
+{
+    if (_head == nullptr)
+        return -1;
+    Node* tail = _head;
+
+    // walk the list
+    while (tail->_next)
+        tail = tail->_next;
+
+    return tail->_data;
+}
 
 template<class T>
 void LinkedList<T>::insert(size_t index, T value)
@@ -159,13 +181,99 @@ void LinkedList<T>::insert(size_t index, T value)
 template<class T>
 void LinkedList<T>::erase(size_t index)
 {
-    Node** indirect = &_head; size_t i;
+    Node** indirect = &_head;
 
     // walk the list
-
+    size_t i;
     for (i = 0; i < index && indirect; i++)
         indirect = &(*indirect)->_next;
+
+    assert(indirect && "Index out of bounds");
+
+    Node* next = (*indirect)->_next;
+    delete *indirect;
+    *indirect = next;
 }
 
+template<class T>
+T LinkedList<T>::value_n_from_end(size_t n)
+{
+    /*
+       sz = 6
+                                
+        n=  5     4     3     2     1     0
+           [0] - [1] - [2] - [3] - [4] - [5]
+    */
+
+    size_t sz = size();
+
+    assert(sz > n && "Index out of bounds");
+
+    Node* cur = _head;
+
+    // for (int i = sz - 1; i >= 0; i++) / same thing
+    for (size_t i = sz - 1; i-- > n ;)
+         cur = cur->_next;
+
+    return cur->_data;
+}
+
+/*
+   |      
+   [0] - [1] - [2] - [3] - [4]
+
+
+          |
+   [1] - [0] - [2] - [3] - [4]
+
+
+                |
+   [2] - [1] - [0] - [3] - [4]
+
+
+                      |
+   [3] - [2] - [1] - [0] - [4]
+
+
+                            |
+   [4] - [3] - [2] - [1] - [0]
+
+   | = orig
+   */
+
+template <class T>
+void LinkedList<T>::reverse()
+{
+    if (!_head) return;
+
+    Node* orig = _head;
+    while (orig->_next)
+    {
+        Node* old = _head;
+        _head = orig->_next;
+        orig->_next = _head->_next;
+        _head->_next = old;
+    }
+}
+
+template<class T>
+void LinkedList<T>::remove_value(T value)
+{
+    // [0] - [1] - [2] - [3] - [4] - [5]
+    Node** indirect = &_head;
+
+    while (indirect)
+    {
+        if ((*indirect)->_data == value)
+        {
+            Node* next = (*indirect)->_next;
+            delete *indirect;
+            *indirect = next;
+            break;
+        }
+        
+        indirect = &(*indirect)->_next;
+    }
+}
 
 template class LinkedList<int>;

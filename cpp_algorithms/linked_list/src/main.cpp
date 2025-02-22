@@ -23,4 +23,9 @@ int main()
     print_list(list, "before insert");
     list.insert(6, 69);
     print_list(list, "before insert");
+    list.remove_value(3);
+    print_list(list, "After delete");
+
+    PRINT(list.value_n_from_end(0));
+
 }
