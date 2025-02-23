@@ -21,7 +21,7 @@ class LinkedList
         void   remove_value(T value);            /* removes the first occurence in the list with specified value */
     public:
         LinkedList() :_head(nullptr) {}
-        ~LinkedList() {}
+        ~LinkedList();
     private:
         struct Node;
         Node* _head;

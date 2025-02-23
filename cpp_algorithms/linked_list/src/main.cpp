@@ -12,20 +12,23 @@ void print_list(LinkedList<int>& list, std::string print_msg = "PRINTING")
 
 int main()
 {
-    LinkedList<int> list;
-    list.push_front(3); // 0
-    list.push_front(8); // 1
-    list.push_front(3); // 2
-    list.push_front(9); // 3
-    list.push_front(2); // 4
-    list.push_front(1); // 5
+    {
+        LinkedList<int> list;
+        list.push_front(3); // 0
+        list.push_front(8); // 1
+        list.push_front(3); // 2
+        list.push_front(9); // 3
+        list.push_front(2); // 4
+        list.push_front(1); // 5
 
-    print_list(list, "before insert");
-    list.insert(6, 69);
-    print_list(list, "before insert");
-    list.remove_value(3);
-    print_list(list, "After delete");
+        print_list(list, "before insert");
+        list.insert(6, 69);
+        print_list(list, "before insert");
+        list.remove_value(3);
+        print_list(list, "After delete");
 
-    PRINT(list.value_n_from_end(0));
+        PRINT(list.value_n_from_end(0));
+    }
 
+    PRINT("TESTING DELETE");
 }

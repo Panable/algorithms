@@ -1,24 +1,19 @@
 #include "linked_list.h"
 
-
 template<class T>
 struct LinkedList<T>::Node
 {
     T _data;
     Node* _next;
 
-    Node() {}
+    Node()
+        :_data(0), _next(nullptr) {}
 
-    Node(T value)
-    {
-        _data = value;
-    }
+    Node(T data)
+        :_data(data), _next(nullptr) {}
 
     Node(T data, Node* next)
-    {
-        _data = data;
-        _next = next;
-    }
+        :_data(data), _next(next) {}
 };
 
 template<class T>
@@ -170,9 +165,8 @@ void LinkedList<T>::insert(size_t index, T value)
         else
             assert(0 && "Index out of bounds");
     }
-    else
+    else // link new elem as normal
     {
-        // link new elem as normal
         Node* next = (*indirect)->_next; // elem to link to
         *indirect = new Node(value, next);
     }
@@ -184,8 +178,7 @@ void LinkedList<T>::erase(size_t index)
     Node** indirect = &_head;
 
     // walk the list
-    size_t i;
-    for (i = 0; i < index && indirect; i++)
+    for (size_t i = 0; i < index && indirect; i++)
         indirect = &(*indirect)->_next;
 
     assert(indirect && "Index out of bounds");
@@ -273,6 +266,19 @@ void LinkedList<T>::remove_value(T value)
         }
         
         indirect = &(*indirect)->_next;
+    }
+}
+
+template<class T>
+LinkedList<T>::~LinkedList()
+{
+    Node* cur = _head;
+
+    while (cur)
+    {
+        Node* next = cur->_next;
+        delete cur;
+        cur = next;
     }
 }
 
