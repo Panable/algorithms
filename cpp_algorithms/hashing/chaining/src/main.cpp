@@ -1,16 +1,27 @@
-#include <iostream>
-#include "linked_list.h"
+#include "hash.h"
+#include <cstdlib>
+#include <vector>
 
 #define PRINT(x) std::cout << x << std::endl;
-
-// void print_list(LinkedList<int>& list, std::string print_msg = "PRINTING")
-// {
-//     PRINT("----- " << print_msg << " -----");
-//     for (size_t i = 0; i < list.size(); i++)
-//         PRINT("INDEX: " << i  << ", is: " << list.value_at(i));
-// }
+#define ARRAY_LEN(x) (sizeof x / sizeof x[0])
 
 int main()
 {
-    PRINT("Hello World");
+    std::string words[] = {
+            "apple",  "banana",  "computer", "elephant", "guitar",
+         "mountain",   "ocean",    "pencil",    "robot", "sunflower",
+        "telescope", "volcano",   "whisper",    "zebra", "galaxy",
+          "horizon",  "jungle", "labyrinth",   "meteor", "nocturnal"
+    };
+
+    srand(10); // same
+
+    Hash<int> hash;
+    for (const std::string& word : words)
+    {
+        hash.add(word, rand() % 100);
+    }
+
+    PRINT(hash.exists("jungle"));
+    PRINT(hash.get("jungle"));
 }

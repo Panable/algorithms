@@ -1,6 +1,6 @@
 #include "linked_list.h"
 
-template<class T>
+template <class T>
 struct LinkedList<T>::Node
 {
     T _data;
@@ -16,7 +16,7 @@ struct LinkedList<T>::Node
         :_data(data), _next(next) {}
 };
 
-template<class T>
+template <class T>
 size_t LinkedList<T>::size()
 {
     size_t sz = 0;
@@ -25,13 +25,13 @@ size_t LinkedList<T>::size()
     return sz;
 }
 
-template<class T>
+template <class T>
 bool LinkedList<T>::empty()
 {
     return !_head;
 }
 
-template<class T>
+template <class T>
 T LinkedList<T>::value_at(size_t index)
 {
     size_t i = 0;
@@ -43,7 +43,7 @@ T LinkedList<T>::value_at(size_t index)
     return -1;
 }
 
-template<class T>
+template <class T>
 void LinkedList<T>::push_front(T value)
 {
     Node* new_node = new Node;
@@ -54,7 +54,7 @@ void LinkedList<T>::push_front(T value)
 }
 
 /* TODO: make this function a bit nicer */
-template<class T>
+template <class T>
 T LinkedList<T>::pop_front()
 {
     if (!_head) return -1;
@@ -72,7 +72,7 @@ T LinkedList<T>::pop_front()
     return val;
 }
 
-template<class T>
+template <class T>
 void LinkedList<T>::push_back(T value)
 {
     Node** indirect = &_head;
@@ -83,7 +83,7 @@ void LinkedList<T>::push_back(T value)
     *indirect = new Node(value);
 }
 
-template<class T>
+template <class T>
 T LinkedList<T>::pop_back()
 {
 
@@ -110,7 +110,7 @@ T LinkedList<T>::pop_back()
     return val;
 }
 
-template<class T>
+template <class T>
 T LinkedList<T>::front()
 {
     if (_head == nullptr)
@@ -118,7 +118,7 @@ T LinkedList<T>::front()
     return _head->_data;
 }
 
-template<class T>
+template <class T>
 T LinkedList<T>::back()
 {
     if (_head == nullptr)
@@ -132,7 +132,7 @@ T LinkedList<T>::back()
     return tail->_data;
 }
 
-template<class T>
+template <class T>
 void LinkedList<T>::insert(size_t index, T value)
 {
     /*
@@ -172,7 +172,7 @@ void LinkedList<T>::insert(size_t index, T value)
     }
 }
 
-template<class T>
+template <class T>
 void LinkedList<T>::erase(size_t index)
 {
     Node** indirect = &_head;
@@ -188,7 +188,7 @@ void LinkedList<T>::erase(size_t index)
     *indirect = next;
 }
 
-template<class T>
+template <class T>
 T LinkedList<T>::value_n_from_end(size_t n)
 {
     /*
@@ -249,7 +249,7 @@ void LinkedList<T>::reverse()
     }
 }
 
-template<class T>
+template <class T>
 void LinkedList<T>::remove_value(T value)
 {
     // [0] - [1] - [2] - [3] - [4] - [5]
@@ -269,7 +269,7 @@ void LinkedList<T>::remove_value(T value)
     }
 }
 
-template<class T>
+template <class T>
 LinkedList<T>::~LinkedList()
 {
     Node* cur = _head;
