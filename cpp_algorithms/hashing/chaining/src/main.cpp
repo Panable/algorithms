@@ -22,6 +22,10 @@ int main()
         hash.add(word, rand() % 100);
     }
 
+    hash.dump();
     PRINT(hash.exists("jungle"));
     PRINT(hash.get("jungle"));
+    hash.remove("jungle");
+    PRINT(hash.exists("jungle"));
+
 }

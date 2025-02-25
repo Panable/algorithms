@@ -1,5 +1,4 @@
 #include "linked_list.h"
-
 template <class T>
 struct LinkedList<T>::Node
 {

@@ -6,7 +6,8 @@ VERSION 1.0.0 #Current Version
 LANGUAGES C CXX #Languages used
 )
 
-set(CMAKE_CXX_STANDARD 17) # C++ Version Being Compiled
+set(CMAKE_CXX_STANDARD 20) # C++ Version Being Compiled
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 file(GLOB_RECURSE SOURCES
         "src/*.h"

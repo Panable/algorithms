@@ -1,4 +1,5 @@
 #include "hash.h"
+#include <format>
 
 template <class T>
 struct Hash<T>::Node
@@ -55,7 +56,6 @@ bool Hash<T>::exists(std::string k)
 
 
     Node* chain = _data[idx];
-    assert(chain);
     for (Node* cur = chain; cur; cur = cur->_next)
         if (cur->_key.compare(k) == 0) return true;
 
@@ -81,6 +81,40 @@ T Hash<T>::get(std::string k)
     return 0;
 }
 
+template <class T>
+void Hash<T>::remove(std::string k)
+{
+    size_t idx = hash_djb2(k, NUM_BUCKETS);
+    for (Node** cur = &_data[idx]; cur; cur = &(*cur)->_next)
+    {
+        if ((*cur)->_key.compare(k) == 0) // key found
+        {
+            Node* nxt = (*cur)->_next;
+            delete *cur;
+            *cur = nxt;
+            return;
+        }
+    }
+}
+
+template <class T>
+void Hash<T>::dump()
+{
+    for (size_t i = 0; i < NUM_BUCKETS; i++)
+    {
+        Node* chain = _data[i];
+        std::string buffer = std::format("{} -", i);
+
+        while (chain)
+        {
+            buffer += std::format(" [\"{}\", {}] ->", chain->_key, chain->_value);
+            chain = chain->_next;
+        }
+
+        std::cout << buffer << std::endl; // print buffer
+    }
+}
+
 // DJB2 implementation
 template <class T>
 size_t Hash<T>::hash_djb2(std::string k, size_t m)
@@ -92,6 +126,24 @@ size_t Hash<T>::hash_djb2(std::string k, size_t m)
     }
 
     return hash % m; /* clamp output */
+}
+
+template <class T>
+Hash<T>::~Hash()
+{
+    for (Node* data : _data)
+    {
+        if (!data) continue;
+        
+        Node* cur = data;
+
+        while (cur)
+        {
+            Node* nxt = cur->_next;
+            delete cur;
+            cur = nxt;
+        }
+    }
 }
 
 template class Hash<int>;
