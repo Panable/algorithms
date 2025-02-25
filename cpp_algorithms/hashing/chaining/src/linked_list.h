@@ -2,9 +2,6 @@
 #include <stddef.h>
 #include <cassert>
 template<class T>
-/**
- * A Linked list implementation
- */
 class LinkedList
 {
     public:
