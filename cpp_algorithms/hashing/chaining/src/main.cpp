@@ -1,9 +1,15 @@
 #include "hash.h"
 #include <cstdlib>
-#include <vector>
 
 #define PRINT(x) std::cout << x << std::endl;
 #define ARRAY_LEN(x) (sizeof x / sizeof x[0])
+
+bool isLittleEndian() //testing
+{
+    short int number = 0x1;
+    char *numPtr = (char*)&number;
+    return (numPtr[0] == 1);
+}
 
 int main()
 {
@@ -16,7 +22,7 @@ int main()
 
     srand(10); // same
 
-    Hash<int> hash;
+    Hash<int> hash(hash_djb2);
     for (const std::string& word : words)
     {
         hash.add(word, rand() % 100);
@@ -28,4 +34,9 @@ int main()
     hash.remove("jungle");
     PRINT(hash.exists("jungle"));
 
+    // this is how FNV prime offset is calculated
+    std::string offset = "chongo <Landon Curt Noll> /\\../\\";
+    PRINT(hash_fnv0(offset));
+
+    PRINT(isLittleEndian());
 }
