@@ -1,2 +1,2 @@
 #!/bin/sh
-make clean build && build/./chaining
+make build && build/./chaining

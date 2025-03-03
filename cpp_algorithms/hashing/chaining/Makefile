@@ -4,10 +4,10 @@ clean:
 	@echo "Cleaning..."
 	@rm -rf build
 
-build: clean
+build:
 	@echo "Building..."
 	@mkdir -p build
-	@cd build && cmake .. && cmake --build .
+	@cd build && cmake .. && cmake --build . -- -j$(nproc)
 
 all: build
 
